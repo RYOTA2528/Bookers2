@@ -10,6 +10,24 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to "Home", 'https://cc8ad7e749434cb6ab7c5e4097c71155.vfs.cloud9.us-east-1.amazonaws.com/' %>
+      </li>
+      <li>
+        <%= link_to "About", home_about_path %>
+      </li>
+      <li>
+        <%= link_to "login", new_user_session_path %>
+      </li>
+      <li>
+        <%= link_to "sign up", new_user_registration_path %>
+      </li>
+    <% end %>
     <%= yield %>
   </body>
 </html>
