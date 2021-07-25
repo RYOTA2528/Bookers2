@@ -1,33 +1,74 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Bookers2</title>
+<head>
+    <title>Bookers2Ver2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+<!--    <meta name="csrf-param" content="authenticity_token">-->
+<!--<meta name="csrf-token" content="xkxYjY4vhGVDcKLXwOnNCBZ935+K6jz4lctq2zMcfvmyLf6C3rG1YkjVdWmyntVNgKiQBaM6Xt5FOA1ew5LNgQ==">-->
+
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">-->
+<!--    <link rel="stylesheet" media="all" href="/assets/application-16605eadccf37c23d1fa922dd614f45b9f2cf25723e2e4032f1975b02ea7d11f.css" data-turbolinks-track="reload">-->
+<!--    <script src="/assets/application-3ac47b8571e58aab844e8d0a988f0f55d8a16c1a75953470343f79cf1bec8528.js" data-turbolinks-track="reload"></script>-->
   </head>
 
-  <body>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "Home", 'https://cc8ad7e749434cb6ab7c5e4097c71155.vfs.cloud9.us-east-1.amazonaws.com/' %>
-      </li>
-      <li>
-        <%= link_to "About", home_about_path %>
-      </li>
-      <li>
-        <%= link_to "login", new_user_session_path %>
-      </li>
-      <li>
-        <%= link_to "sign up", new_user_registration_path %>
-      </li>
-    <% end %>
-    <%= yield %>
-  </body>
+<body>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/"><span>Bookers</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+           <li class="nav-item">
+            <%= link_to "Home", user_path(current_user.id), class: 'fas fa-home nav-link text-light' %>
+           </li>
+           <li class="nav-item">
+            <%= link_to "Users", users_path, class: 'fas fa-users nav-link text-light' %>
+           </li>
+           <li class="nav-item">
+            <%= link_to "books", books_path, class: 'fas fa-book-open nav-link text-light' %>
+           </li class="nav-item">
+           <li class="nav-item">
+            <%= link_to "logout", destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light' %>
+           </li>
+          <% else %>
+           <li class="nav-item">
+            <%= link_to "Home", top_path, class: 'fas fa-home nav-link text-light' %>
+           </li>
+           <li class="nav-item">
+            <%= link_to "About", home_about_path, class: 'fas fa-link nav-link text-light' %>
+           </li>
+           <li class="nav-item">
+            <%= link_to "sign up", new_user_registration_path, class: 'fas fa-user-plus nav-link text-light'  %>
+           </li>
+           <li class="nav-item">
+            <%= link_to "login", new_user_session_path, class: 'fas fa-sign-in-alt nav-link text-light' %>
+           </li>
+          <% end %>
+       </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<main class="mb-auto">
+<%= yield %>
+</main>
+<footer>
+  <div class="container mt-5">
+  	<div class="row">
+    	<div class="mx-auto">
+    		<p>CopyRight Infratop.inc</p>
+    	</div>
+    </div>
+  </div>
+</footer>
+</body>
 </html>
