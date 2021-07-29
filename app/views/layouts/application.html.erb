@@ -20,7 +20,8 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="/"><span>Bookers</span></a>
+      <!--<a class="navbar-brand" href="/"><span>Bookers</span></a>-->
+       <span><%= link_to "Bookers", root_path, class: 'navbar-brand' %></span>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -41,7 +42,7 @@
            </li>
           <% else %>
            <li class="nav-item">
-            <%= link_to "Home", top_path, class: 'fas fa-home nav-link text-light' %>
+            <%= link_to "Home", root_path, class: 'fas fa-home nav-link text-light' %>
            </li>
            <li class="nav-item">
             <%= link_to "About", home_about_path, class: 'fas fa-link nav-link text-light' %>
@@ -59,6 +60,8 @@
   </nav>
 </header>
 <main class="mb-auto">
+<p id="notice"><%= notice %></p>
+
 <%= yield %>
 </main>
 <footer>
