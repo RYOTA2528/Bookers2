@@ -21,6 +21,8 @@
 
 <div class="row">
   <%= link_to "", edit_user_path(@user), class: 'btn btn-outline-secondary btn-block fas fa-user-cog' %>
+  <!--ここで()の中身をcurrent_userにしてしまうとこの画像をクリックしたものがcurrent_userでない限り、強制的にはじかれてしまう。つまりせっかくuser controllerで設定したbefore ensure_correctの設定が無効になってしまう-->
+<!--その為、一度どのユーザーでもpathを通せるように引数を@userにする必要があった-->
   <% if @user.errors.any? %>
   <%= @user.errors.count %>error prohibited this obj from being saved:
   <% @user.errors.full_messages.each do |message| %>
